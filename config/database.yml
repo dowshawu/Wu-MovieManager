@@ -22,10 +22,8 @@ default: &default
   pool: 5
 
 development:
-  adapter: sqlite3
-  encodeing: unicode
+  <<: *default
   database: Wu-MovieManager_development
-  pool: 5
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
