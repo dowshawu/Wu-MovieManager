@@ -22,8 +22,9 @@ default: &default
   pool: 5
 
 development:
-  adapter: sqlite3
-  encodeing: unicode
+  <<: *default
+  # adapter: sqlite3
+  # encodeing: unicode
   database: Wu-MovieManager_development
   pool: 5
 
