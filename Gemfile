@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'devise'
-gem 'omniauth'
-gem 'omniauth-twitter'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -18,8 +16,11 @@ gem 'sass-rails', '~> 5.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
 # Use bootstrap 
-gem 'twitter-bootstrap-rails'
+# gem 'twitter-bootstrap-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

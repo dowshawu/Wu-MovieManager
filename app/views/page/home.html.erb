@@ -1,6 +1,10 @@
 <h1 class="cover-heading">Manage your movie.</h1>
 <p class="lead cover-heading">Make your own movie collection and share to your frined.</p>
 <p class="lead">
-	<a href=<%= new_user_registration_path%> class="btn btn-lg btn-info">Register now</a>
+	<% if user_signed_in? %>
+		<%= link_to("Let's start", user_movies_path(current_user), :class => "btn btn-lg btn-primary", :method => :get) %>
+	<% else %>
+		<%= link_to("Register now", {:controller => "devise/registrations", :action => "new"} , :class => "btn btn-lg btn-info") %>
+	<% end %>
 
 </p>

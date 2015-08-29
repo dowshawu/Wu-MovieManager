@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require bootstrap.min
+//= require ie10-viewport-bug-workaround
 //= require turbolinks
 //= require_tree .
+
