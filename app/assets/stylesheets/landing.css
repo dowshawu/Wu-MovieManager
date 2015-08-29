@@ -1,11 +1,19 @@
+/* 
+ = require twitter-bootstrap-static/bootstrap
+ = require_self
+*/
+
 /*
  * Globals
  */
 
+
+
 /* Links */
 a,
 a:focus,
-a:hover {
+a:hover,
+a:visited {
   color: #fff;
 }
 
@@ -72,6 +80,7 @@ body {
 .masthead-brand {
   margin-top: 10px;
   margin-bottom: 10px;
+  color: #fff;
 }
 
 .masthead-nav > li {
@@ -122,6 +131,9 @@ body {
 .cover .btn-lg {
   padding: 10px 20px;
   font-weight: bold;
+}
+.cover-heading {
+  color: #fff;
 }
 
 

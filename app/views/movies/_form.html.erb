@@ -1,0 +1,54 @@
+<%= form_for([@user, @movie], :url => user_movies_url(:user_id)) do |f| %>
+  <% if @movie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+      <ul>
+      <% @movie.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "form-control" %>
+  </div> 
+
+  <div class="form-group">
+    <%= f.label :format %>
+    <%= f.select(:format) do %>
+      <% [['VHS', 'VHS'], ['DVD', 'DVD'], ['Streaming', 'Streaming']].each do |c| -%>
+        <%= content_tag(:option, c.first, value: c.last) %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :length %>
+    <%= f.time_select :length, {:default => {:hour => '0', :minute => '0'}} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :release_year %>
+    <%= f.text_field :release_year, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :rating %>
+    <%= label_tag(:rating_1, "1", :class => "radio-inline") %>
+      <%= radio_button_tag(:rating, 1) %>
+    <%= label_tag(:rating_2, "2", :class => "radio-inline") %>   
+      <%= radio_button_tag(:rating, 2) %>
+    <%= label_tag(:rating_3, "3", :class => "radio-inline") %>
+      <%= radio_button_tag(:rating, 3) %>
+    <%= label_tag(:rating_4, "4", :class => "radio-inline") %>
+      <%= radio_button_tag(:rating, 4) %>
+    <%= label_tag(:rating_5, "5", :class => "radio-inline") %>
+      <%= radio_button_tag(:rating, 5) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
