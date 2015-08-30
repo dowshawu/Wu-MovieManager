@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
   # GET /movies/new
   def new
     @user = User.find(params[:user_id])
-    @movie = User.find(params[:user_id]).movies.new
+    @movie = User.find(params[:user_id]).movies.build
   end
 
   # GET /movies/1/edit
@@ -28,8 +28,8 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
-    # @user = current_user
-    @movie = @user.movies.new(movie_params)
+    @user = User.find(params[:user_id])
+    @movie = @user.movies.build(movie_params)
 
     respond_to do |format|
       if @movie.save
