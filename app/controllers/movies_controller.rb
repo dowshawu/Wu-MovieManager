@@ -6,7 +6,8 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    # @user = User.find(params[:user_id])
+    @movies = User.find(params[:user_id]).movies.all
   end
 
   # GET /movies/1
@@ -16,7 +17,8 @@ class MoviesController < ApplicationController
 
   # GET /movies/new
   def new
-    @movie = Movie.new
+    @user = User.find(params[:user_id])
+    @movie = User.find(params[:user_id]).movies.new
   end
 
   # GET /movies/1/edit
@@ -26,11 +28,12 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
-    @movie = Movie.new(movie_params)
+    # @user = current_user
+    @movie = @user.movies.new(movie_params)
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
+        format.html { redirect_to :acion => 'show', :id => @movie.id, :user_id => @user.id, notice: 'Movie was successfully created.' }
         format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new }
@@ -44,7 +47,7 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
+        format.html { redirect_to :acion => 'show', :id => @movie.id, :user_id => @user.id, notice: 'Movie was successfully updated.' }
         format.json { render :show, status: :ok, location: @movie }
       else
         format.html { render :edit }
@@ -56,9 +59,10 @@ class MoviesController < ApplicationController
   # DELETE /movies/1
   # DELETE /movies/1.json
   def destroy
+    @movie = Movie.find(params[:id])
     @movie.destroy
     respond_to do |format|
-      format.html { redirect_to movies_url, notice: 'Movie was successfully destroyed.' }
+      format.html { redirect_to :action => 'index', :user_id => @user.id, notice: 'Movie was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,11 +70,12 @@ class MoviesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
-      @movie = Movie.find(params[:id])
+      @movie = User.find(params[:user_id]).movies.find(params[:id])
+      @user = User.find(params[:user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params[:movie]
+      params.require(:movie).permit(:title, :format, :length, :release_year, :rating)
     end
 end

@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @movie %> |
-<%= link_to 'Back', movies_path %>
+<%= link_to 'Show', {:action => 'show', :id => params[:id], :user_id => @user.id } %> |
+<%= link_to 'Back', {:action => 'index', :user_id => @user.id } %>

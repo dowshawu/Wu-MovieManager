@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20150828225603) do
   enable_extension "plpgsql"
 
   create_table "movies", force: :cascade do |t|
-    t.integer  "userID",       null: false
-    t.string   "title"
-    t.string   "format"
+    t.integer  "user_id",      null: false
+    t.string   "title",        null: false
+    t.string   "format",       null: false
     t.time     "length"
     t.integer  "release_year"
     t.integer  "rating"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150828225603) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "movies", ["userID"], name: "index_movies_on_userID", using: :btree
+  add_index "movies", ["user_id"], name: "index_movies_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

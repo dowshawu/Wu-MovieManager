@@ -2,6 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Back', user_movies_path(current_user) %>
+<%= link_to 'Back', {:action => 'index', :user_id => @user.id} %>
 
-<%= params.inspect %>
