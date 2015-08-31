@@ -17,17 +17,27 @@
 
   <div class="form-group">
     <%= f.label :format %>
-    <%= f.select(:format) do %>
-      <% [['VHS', 'VHS'], ['DVD', 'DVD'], ['Streaming', 'Streaming']].each do |c| -%>
-        <%= content_tag(:option, c.first, value: c.last) %>
-      <% end %>
-    <% end %>
+    <%= f.select(:format, options_for_select([["VHS"],["DVD"],["Streaming"]], @movie.format )) %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :length %>
-    <%= f.time_select :length, {:default => {:hour => '0', :minute => '0'}} %>
-  </div>
+  <form class="form-inline">
+    <div class="form-group">
+      <%= f.label :length %> (HH:MM)
+      <div class="input-group">
+        <% if @movie.length.nil? %>
+          <%= f.text_field :length_hour, :value => 0, :class => "form-control" %> 
+        <% else %>
+          <%= f.text_field :length_hour, :value => @movie.length/60, :class => "form-control" %> 
+        <% end %>
+        <div class="input-group-addon">:</div>
+        <% if @movie.length.nil? %>
+          <%= f.text_field :length_min, :value => 0, :class => "form-control" %>
+        <% else %>
+          <%= f.text_field :length_min, :value => @movie.length%60, :class => "form-control" %>
+        <% end %>
+      </div>
+    </div>
+  </form>
 
   <div class="form-group">
     <%= f.label :release_year %>
@@ -48,7 +58,6 @@
       <%= radio_button_tag(:rating, 5) %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit :class => "btn btn-warning", :value => "Update" %>
+
 <% end %>

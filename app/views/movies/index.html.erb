@@ -2,18 +2,14 @@
 
 <h1>Listing Movies</h1>
 
-<table id="musicTable" class="display" width="100%" style="width:100%;">
+<table id="Table" class="table-hover table display">
   <thead>
     <tr>
       <th >Title</th>
-      <th data-hide="phone" data-name="Format">Format</th>
-      <th data-hide="phone,tablet" data-name="Length">Length(HH:MM)</th>
-      <th data-hide="phone,tablet" data-name="Size">Release Year</th>
-      <th data-hide="phone,tablet" data-name="Size">Rating</th>
-      <th display:none>
-      <th display:none>
-      <th display:none>
-      <th colspan="3"></th>
+      <th class="hidden-xs hidden-sm">Format</th>
+      <th class="hidden-xs hidden-sm hidden-md">Length(HH:MM)</th>
+      <th class="hidden-xs hidden-sm hidden-md">Release Year</th>
+      <th class="hidden-xs hidden-sm hidden-md">Rating</th>
     </tr>
   </thead>
 
@@ -21,13 +17,14 @@
     <% @movies.each do |movie| %>
       <tr>
         <td><%= movie.title %></td>
-        <td><%= movie.format %></td>
-        <td><%= movie.length.hour %>:<%= movie.length.min %></td>
-        <td><%= movie.release_year %></td>
-        <td><%= movie.rating %></td>
-        <td><%= link_to 'Show', {:action => 'show', :id => movie.id, :user_id => params[:user_id] } %></td>
-        <td><%= link_to 'Edit', {:action => 'edit', :id => movie.id, :user_id => params[:user_id] } %></td>
-        <td><%= link_to 'Destroy', {:action => 'destroy', :id => movie.id, :user_id => params[:user_id] }, method: :delete,  data: { confirm: 'Are you sure?' } %></td>
+        <td class="hidden-xs hidden-sm"><%= movie.format %></td>
+        <td class="hidden-xs hidden-sm hidden-md"><%= movie.length/60 %>:<%= movie.length%60 %></td>
+        <td class="hidden-xs hidden-sm hidden-md"><%= movie.release_year %></td>
+        <td class="hidden-xs hidden-sm hidden-md"><%= movie.rating %></td>
+        <td>
+          <%= link_to 'Details', {:action => 'show', :id => movie.id, :user_id => params[:user_id]}, :class => "btn btn-default btn-sm"  %>
+          <%= link_to 'Edit', {:action => 'edit', :id => movie.id, :user_id => params[:user_id]}, :class => "btn btn-sm btn-warning" %>
+          <%= link_to 'Destroy', {:action => 'destroy', :id => movie.id, :user_id => params[:user_id] }, method: :delete,  data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm"  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,5 +32,5 @@
 
 <br>
 
-<%= link_to 'New Movie', new_user_movie_path %>
+<%= link_to 'Add Movie', new_user_movie_path, :class => "btn btn-primary" %>
 <br>

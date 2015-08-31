@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<table id="musicTable" class="display" width="100%" style="width:100%;">
+<table id="movieTable" class="table table-hover" width="100%" style="width:100%;">
   <thead>
     <tr>
       <th >Title</th>
@@ -16,13 +16,13 @@
       <tr>
         <td><%= @movie.title %></td>
         <td><%= @movie.format %></td>
-        <td><%= @movie.length.hour %>:<%= @movie.length.min %></td>
+        <td><%= @movie.length/60 %>:<%= @movie.length%60 %></td>
         <td><%= @movie.release_year %></td>
         <td><%= @movie.rating %></td>
       </tr>
   </tbody>
 </table>
 
-<%= link_to 'Edit', {:action => 'edit', :user_id => @user.id } %> 
-<%= link_to 'Back', {:action => 'index', :user_id => @user.id } %>
+<%= link_to 'Edit', {:action => 'edit', :user_id => @user.id }, :class => "btn btn-warning" %> 
+<%= link_to 'Back', @back_url, :class => "btn btn-info" %>
 <br>

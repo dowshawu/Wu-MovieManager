@@ -13,16 +13,19 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    @back_url = session[:my_previous_url]
   end
 
   # GET /movies/new
   def new
     @user = User.find(params[:user_id])
     @movie = User.find(params[:user_id]).movies.build
+    @back_url = session[:my_previous_url]
   end
 
   # GET /movies/1/edit
   def edit
+    @back_url = session[:my_previous_url]
   end
 
   # POST /movies
@@ -76,6 +79,11 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title, :format, :length, :release_year, :rating)
+      params.require(:movie).permit(:title, :format, :length_hour, :length_min, :release_year, :rating)
     end
+
+    def save_my_previous_url
+    # session[:previous_url] is a Rails built-in variable to save last url.
+    session[:my_previous_url] = URI(request.referer || '').path
+  end
 end

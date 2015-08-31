@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150828225603) do
     t.integer  "user_id",      null: false
     t.string   "title",        null: false
     t.string   "format",       null: false
-    t.time     "length"
+    t.integer  "length",       null: false
     t.integer  "release_year"
     t.integer  "rating"
     t.datetime "created_at",   null: false
