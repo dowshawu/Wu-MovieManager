@@ -1,7 +1,10 @@
 <h2 class = "cover-heading">Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+
+  <%- flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, id: "flash_#{name}", :class => "bg-danger text-danger" %>
+  <%- end -%>
 
   <div class="form-group">
     <%= f.email_field :email, autofocus: true, :class => "form-control" %>
