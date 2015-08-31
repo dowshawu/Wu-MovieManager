@@ -37,7 +37,7 @@
         <% end %>
       </div>
     </div>
-  </form>
+  
 
   <div class="form-group">
     <%= f.label :release_year %>
@@ -57,7 +57,11 @@
     <%= label_tag(:rating_5, "5", :class => "radio-inline") %>
       <%= radio_button_tag(:rating, 5) %>
   </div>
-
-  <%= f.submit :class => "btn btn-warning", :value => "Update" %>
+</form>  
+  <% if @movie.length.nil? %>
+    <%= f.submit :class => "btn btn-warning", :value => "Create" %>
+  <% else %>
+    <%= f.submit :class => "btn btn-warning", :value => "Update" %>
+  <% end %>
 
 <% end %>

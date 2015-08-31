@@ -2,6 +2,7 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   layout 'application'
+  after_filter "save_my_previous_url", only: [:new, :edit, :show]
 
   # GET /movies
   # GET /movies.json
