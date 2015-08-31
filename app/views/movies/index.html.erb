@@ -5,11 +5,12 @@
 <table id="Table" class="table-hover table display">
   <thead>
     <tr>
-      <th >Title</th>
-      <th class="hidden-xs hidden-sm">Format</th>
-      <th class="hidden-xs hidden-sm hidden-md">Length(HH:MM)</th>
-      <th class="hidden-xs hidden-sm hidden-md">Release Year</th>
-      <th class="hidden-xs hidden-sm hidden-md">Rating</th>
+      <th><%= sortable "title", "Title"%></th>
+      <th class="hidden-xs hidden-sm"><%= sortable "format", "Format" %></th>
+      <th class="hidden-xs hidden-sm hidden-md"><%= sortable "length", "Length(H:MM)" %></th>
+      <th class="hidden-xs hidden-sm hidden-md"><%= sortable "release_year", "Release Year" %></th>
+      <th class="hidden-xs hidden-sm hidden-md"><%= sortable "rating", "Rating" %></th>
+      <th><span class="glyphicon glyphicon-hand-left"></span>Click to sort</th>
     </tr>
   </thead>
 

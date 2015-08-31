@@ -2,12 +2,12 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   layout 'application'
+  helper_method :sort_column, :sort_direction
 
   # GET /movies
   # GET /movies.json
   def index
-    # @user = User.find(params[:user_id])
-    @movies = User.find(params[:user_id]).movies.all
+    @movies = current_user.movies.order(sort_column + " " + sort_direction)
   end
 
   # GET /movies/1
@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
 
   # GET /movies/new
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @movie = User.find(params[:user_id]).movies.build
   end
 
@@ -79,4 +79,11 @@ class MoviesController < ApplicationController
       params.require(:movie).permit(:title, :format, :length_hour, :length_min, :release_year, :rating)
     end
 
+    def sort_column
+      Movie.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+    end
 end

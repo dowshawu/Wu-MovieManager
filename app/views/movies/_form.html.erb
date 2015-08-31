@@ -63,17 +63,18 @@
 
   <div class="form-group">
     <%= f.label :rating %>
-    <%= label_tag(:rating_1, "1", :class => "radio-inline") %>
-      <%= radio_button_tag(:rating, 1) %>
-    <%= label_tag(:rating_2, "2", :class => "radio-inline") %>   
-      <%= radio_button_tag(:rating, 2) %>
-    <%= label_tag(:rating_3, "3", :class => "radio-inline") %>
-      <%= radio_button_tag(:rating, 3) %>
-    <%= label_tag(:rating_4, "4", :class => "radio-inline") %>
-      <%= radio_button_tag(:rating, 4) %>
-    <%= label_tag(:rating_5, "5", :class => "radio-inline") %>
-      <%= radio_button_tag(:rating, 5) %>
+    <%= f.label :rating, "1", :class => "radio-inline" %>
+      <%= f.radio_button :rating, 1, :check => @movie.rating == 1 %>
+    <%= f.label :rating, "2", :class => "radio-inline" %>   
+      <%= f.radio_button :rating, 2, :check => @movie.rating == 2 %>
+    <%= f.label :rating, "3", :class => "radio-inline" %>
+      <%= f.radio_button :rating, 3, :check => @movie.rating == 3 %>
+    <%= f.label :rating, "4", :class => "radio-inline" %>
+      <%= f.radio_button :rating, 4, :check => @movie.rating == 4 %>
+    <%= f.label :rating, "5", :class => "radio-inline" %>
+      <%= f.radio_button :rating, 5, :check => @movie.rating == 5 %>
   </div>
+
   
   <% if @movie.length.nil? %>
     <%= f.submit :class => "btn btn-warning", :value => "Create" %>
