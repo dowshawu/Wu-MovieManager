@@ -8,7 +8,7 @@ class Movie < ActiveRecord::Base
 	validates_presence_of :length
 	validates_presence_of :release_year
 	validates_length_of :title, maximum: 30, :message => "less than 50 charaters"
-	validates_inclusion_of :format, in: %w( VHD DVD Streaming ), :message => "extension %{value} is not included in the list"
+	validates_inclusion_of :format, in: %w( VHS DVD Streaming ), :message => "extension %{value} is not included in the list"
 	validates_numericality_of :release_year, :greater_than => 1800, :less_than => 2100, :message => "must be in range 1800~2100"
 	validates_numericality_of :length, greater_than: 0, less_than: 500, :message => "must be in range 0~500 minutes"
 	validates_numericality_of :length_hour, greater_than: -1, less_than: 9, :message => "must be in range 0~9 hours"

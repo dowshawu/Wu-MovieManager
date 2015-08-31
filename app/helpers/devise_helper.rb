@@ -16,7 +16,7 @@ module DeviseHelper
     html = <<-HTML
     <div id="error_explanation">
       <!-- <h2 class="text-danger">#{sentence}</h2> -->
-      <ul class="bg-danger">#{messages}</ul>
+      <ul class="bg-danger text-danger">#{messages}</ul>
     </div>
     HTML
 
