@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', {:action => 'show', :id => params[:id], :user_id => @user.id }, :class => "btn btn-default" %>
-<%= link_to 'Back', @back_url, :class => "btn btn-info" %>
+<%= link_to 'Back', request.referer, :class => "btn btn-info" %>

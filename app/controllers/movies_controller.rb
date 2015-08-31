@@ -2,7 +2,6 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   layout 'application'
-  after_filter "save_my_previous_url", only: [:new, :edit, :show]
 
   # GET /movies
   # GET /movies.json
@@ -14,19 +13,16 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
-    @back_url = session[:my_previous_url]
   end
 
   # GET /movies/new
   def new
     @user = User.find(params[:user_id])
     @movie = User.find(params[:user_id]).movies.build
-    @back_url = session[:my_previous_url]
   end
 
   # GET /movies/1/edit
   def edit
-    @back_url = session[:my_previous_url]
   end
 
   # POST /movies
@@ -83,8 +79,4 @@ class MoviesController < ApplicationController
       params.require(:movie).permit(:title, :format, :length_hour, :length_min, :release_year, :rating)
     end
 
-    def save_my_previous_url
-    # session[:previous_url] is a Rails built-in variable to save last url.
-    session[:my_previous_url] = URI(request.referer || '').path
-  end
 end
