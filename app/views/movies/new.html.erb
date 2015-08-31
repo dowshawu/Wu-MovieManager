@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Back', request.referer, :class => "btn btn-info" %>
+<%= link_to 'Cancel', {:action => 'index', :user_id => @user.id}, :class => "btn btn-default btn-adjust" %>
 

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Movies</h1>
-
+<%= link_to 'Add Movie', new_user_movie_path, :class => "btn btn-primary" %>
 <table id="Table" class="table-hover table display">
   <thead>
     <tr>
@@ -30,7 +30,3 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'Add Movie', new_user_movie_path, :class => "btn btn-primary" %>
-<br>

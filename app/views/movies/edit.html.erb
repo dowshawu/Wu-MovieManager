@@ -1,6 +1,7 @@
-<h1>Editing Movie</h1>
+<h1>Editing Movie <%= @movie.title%></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', {:action => 'show', :id => params[:id], :user_id => @user.id }, :class => "btn btn-default" %>
-<%= link_to 'Back', request.referer, :class => "btn btn-info" %>
+<%= link_to 'Cancel', {:action => 'show', :id => params[:id], :user_id => @user.id }, :class => "btn btn-default btn-adjust" %>
+
+
