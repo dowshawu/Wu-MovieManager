@@ -18,7 +18,7 @@ gem 'sass-rails', '~> 5.0'
 
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 # Use bootstrap 
 # gem 'twitter-bootstrap-rails'
 

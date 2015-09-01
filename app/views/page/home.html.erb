@@ -5,6 +5,7 @@
 		<%= link_to("Let's start", user_movies_path(current_user), :class => "btn btn-lg btn-primary", :method => :get) %>
 	<% else %>
 		<%= link_to("Register now", {:controller => "devise/registrations", :action => "new"} , :class => "btn btn-lg btn-info") %>
+		<%= link_to "Facebook", user_omniauth_authorize_path(:facebook), :class =>"btn btn-primary" %>
 	<% end %>
 
 </p>

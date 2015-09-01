@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   
   resources :users do
     resources :movies
   end
-  
+  # get '/auth/:provider/callback', to: 'sessions#create'
   root 'page#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
